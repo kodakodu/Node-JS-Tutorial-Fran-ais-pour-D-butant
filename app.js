@@ -13,6 +13,10 @@ app.get('/api/pokemons/:id', (req, res) => {
   const pokemon = pokemons.find((pokemon) => pokemon.id === parseInt(id));
   res.send(`Vous aves demandé le pokemon n°${pokemon.name}`);
 });
+
+app.get('/api/pokemons', (req, res) => {
+  res.send(`Il y a ${pokemons.length} pokemons`);
+});
 //console.log('Hello !');
 
 app.listen(port, () => {
