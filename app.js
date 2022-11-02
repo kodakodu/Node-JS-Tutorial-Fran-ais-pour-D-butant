@@ -13,16 +13,19 @@ app.get('/api/pokemons/:id', (req, res) => {
   const pokemon = pokemons.find((pokemon) => pokemon.id === id);
 
   if (pokemon == null) {
-    const message = 'Aucun pokemon a été trouvé !';
+    const message = 'Aucun pokémon a été trouvé !';
     res.json(notsuccess(message));
   } else {
-    const message = 'Un pokemon a bien été trouvé';
+    const message = 'Un pokémon a bien été trouvé';
     res.json(success(message, pokemon));
   }
 });
 
 app.get('/api/pokemons', (req, res) => {
-  res.send(`Il y a ${pokemons.length} pokemons dans le pokedex`);
+  const message = 'La liste des pokémons a bien été recupérée';
+  //const pokemons = pokemons;
+
+  res.json(success(message, pokemons));
 });
 //console.log('Hello !');
 
