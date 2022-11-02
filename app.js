@@ -9,13 +9,13 @@ app.get('/', (req, res) => {
 });
 app.get('/api/pokemons/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  //const pokemon = pokemons.find(({ id }) => id === req.params.id);
   const pokemon = pokemons.find((pokemon) => pokemon.id === id);
-  res.send(`Vous aves demandé le pokemon n°${pokemon.id} - ${pokemon.name}`);
+  //res.send(`Vous aves demandé le pokemon n°${pokemon.id} - ${pokemon.name}`);
+  res.json(pokemon);
 });
 
 app.get('/api/pokemons', (req, res) => {
-  res.send(`Il y a ${pokemons.length} pokemons`);
+  res.send(`Il y a ${pokemons.length} pokemons dans le pokedex`);
 });
 //console.log('Hello !');
 
