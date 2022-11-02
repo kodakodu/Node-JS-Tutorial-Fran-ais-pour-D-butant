@@ -43,6 +43,16 @@ app.post('/api/pokemons', (req, res) => {
   res.json(message, pokemonCreated);
 });
 
+app.put('/api/pokemons/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const pokemonUpdated = { ...req.body, id: id };
+  pokemons = pokemons.map((pokemon) => {
+    return pokemon.id === id ? pokemonUpdated : pokemon;
+  });
+  const message = `Le pokémon ${pokemonUpdated.name} à bien été modifié`;
+  res.json(success(message, pokemonUpdated));
+});
+
 app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
 });
