@@ -17,10 +17,10 @@
   },
   "homepage": "https://github.com/kodakodu/Node-Pokemon-API#readme",
   "dependencies": {
-    "express": "^4.18.2",
-    "morgan": "^1.10.0"
+    "express": "^4.18.2"
   },
   "devDependencies": {
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   }
 }
