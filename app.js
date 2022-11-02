@@ -23,11 +23,8 @@ app.get('/api/pokemons/:id', (req, res) => {
 
 app.get('/api/pokemons', (req, res) => {
   const message = 'La liste des pokémons a bien été recupérée';
-  //const pokemons = pokemons;
-
   res.json(success(message, pokemons));
 });
-//console.log('Hello !');
 
 app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
