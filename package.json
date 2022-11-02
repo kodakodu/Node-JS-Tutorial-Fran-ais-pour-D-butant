@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kodakodu/Node-Pokemon-API#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "express": "^4.18.2",
     "serve-favicon": "^2.5.0"
   },

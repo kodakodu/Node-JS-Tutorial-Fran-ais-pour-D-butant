@@ -1,13 +1,17 @@
 const express = require('express');
 const morgan = require('morgan');
-const { success, notsuccess } = require('./helper');
+const { success, notsuccess, getUniqueId } = require('./helper');
+const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 let pokemons = require('./mock-pokemon.js');
 const app = express();
 
 const port = 3000;
 
-app.use(favicon(__dirname + '/favicon.ico')).use(morgan('dev'));
+app
+  .use(favicon(__dirname + '/favicon.ico'))
+  .use(morgan('dev'))
+  .use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.send('Hello Express');
@@ -28,6 +32,15 @@ app.get('/api/pokemons/:id', (req, res) => {
 app.get('/api/pokemons', (req, res) => {
   const message = 'La liste des pokémons a bien été recupérée';
   res.json(success(message, pokemons));
+});
+
+app.post('/api/pokemons', (req, res) => {
+  const id = getUniqueId(pokemons);
+  const pokemonCreated = { ...req.body, ...{ id: id, created: new Date() } };
+  pokemons.push(pokemonCreated);
+  const message = `Le pokémon ${pokemonCreated.name} a bie été ajouté au pokédex`;
+  res.sendStatus(200);
+  res.json(message, pokemonCreated);
 });
 
 app.listen(port, () => {
