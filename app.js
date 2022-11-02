@@ -8,10 +8,10 @@ app.get('/', (req, res) => {
   res.send('Hello Express');
 });
 app.get('/api/pokemons/:id', (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
   //const pokemon = pokemons.find(({ id }) => id === req.params.id);
-  const pokemon = pokemons.find((pokemon) => pokemon.id === parseInt(id));
-  res.send(`Vous aves demandé le pokemon n°${pokemon.name}`);
+  const pokemon = pokemons.find((pokemon) => pokemon.id === id);
+  res.send(`Vous aves demandé le pokemon n°${pokemon.id} - ${pokemon.name}`);
 });
 
 app.get('/api/pokemons', (req, res) => {
