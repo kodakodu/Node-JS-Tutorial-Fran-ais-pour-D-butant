@@ -18,6 +18,13 @@ const sequelize = new Sequelize('pokedex', 'root', '', {
   logging: false,
 });
 
+sequelize
+  .authenticate()
+  .then((_) =>
+    console.log('La connexion à la base de données a bien été établie')
+  )
+  .catch((error) => console.error(`Erreur de connexion a la base : ${error}`));
+
 app
   .use(favicon(__dirname + '/favicon.ico'))
   .use(morgan('dev'))
