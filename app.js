@@ -2,11 +2,21 @@ const express = require('express');
 const morgan = require('morgan');
 const { success, notsuccess, getUniqueId } = require('./helper');
 const bodyParser = require('body-parser');
+const { Sequelize } = require('sequelize');
 const favicon = require('serve-favicon');
 let pokemons = require('./mock-pokemon.js');
 const app = express();
 
 const port = 3000;
+
+const sequelize = new Sequelize('pokedex', 'root', '', {
+  host: 'localhost',
+  dialect: 'mariadb',
+  dialectOptions: {
+    timezone: 'Etc/GMT-2',
+  },
+  logging: false,
+});
 
 app
   .use(favicon(__dirname + '/favicon.ico'))
