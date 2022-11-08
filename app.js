@@ -2,12 +2,19 @@ const express = require('express');
 const morgan = require('morgan');
 const { success, notsuccess, getUniqueId } = require('./helper');
 const bodyParser = require('body-parser');
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const favicon = require('serve-favicon');
+var fs = require('fs');
+var path = require('path');
+const PokemonModel = require('./src/models/pokemon');
 let pokemons = require('./mock-pokemon.js');
 const app = express();
 
 const port = 3000;
+
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
+  flags: 'a',
+});
 
 const sequelize = new Sequelize('pokedex', 'root', '', {
   host: 'localhost',
@@ -24,6 +31,12 @@ sequelize
     console.log('La connexion à la base de données a bien été établie')
   )
   .catch((error) => console.error(`Erreur de connexion a la base : ${error}`));
+
+  const Pokemon = PokemonModel(sequelize,DataTypes);
+
+  sequelize.sync({force: true}).then(_ => console.log('La base de données Pokedex a bien été synchronisée.'))
+
+//   .use(morgan('combined', { stream: accessLogStream }))
 
 app
   .use(favicon(__dirname + '/favicon.ico'))

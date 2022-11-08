@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define(
+  const Pokemon = sequelize.define(
     'Pokemon',
     {
       id: {
@@ -34,4 +34,5 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: false,
     }
   );
+  return Pokemon;
 };
