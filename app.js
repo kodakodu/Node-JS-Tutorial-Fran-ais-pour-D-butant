@@ -22,6 +22,8 @@ app
 
 sequelize.initDb();
 
+require('./src/routes/findAllPokemons')(app);
+
 app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
 });
