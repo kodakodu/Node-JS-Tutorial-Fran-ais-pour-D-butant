@@ -25,6 +25,7 @@ sequelize.initDb();
 require('./src/routes/findAllPokemons')(app);
 require('./src/routes/findPokemonByPk')(app);
 require('./src/routes/createPokemon')(app);
+require('./src/routes/updatePokemon')(app);
 
 app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
