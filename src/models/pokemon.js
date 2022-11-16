@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isEmpty: { msg: `Le nom ne peut pas être vide.` },
+          notNull: { msg: `Le nom est une propriété requise.` },
+        },
       },
       hp: {
         type: DataTypes.INTEGER,
@@ -24,10 +28,20 @@ module.exports = (sequelize, DataTypes) => {
       cp: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        validate: {
+          isInt: {
+            msg: 'Utilisez uniquement des nombres entiers pour les points de combat.',
+          },
+          notNull: { msg: `Les points de combat sont une propriété requise.` },
+        },
       },
       picture: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isURL: { msg: `Picture doit être une url valide` },
+          notNull: { msg: `Picture est une propriété requise.` },
+        },
       },
       types: {
         type: DataTypes.STRING,
