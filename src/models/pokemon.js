@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: {
+          msg: 'Le nom est dejà pris.',
+        },
         validate: {
           notNull: { msg: 'Le nom est une propriété requise.' },
           notEmpty: { msg: 'Le nom ne peut pas être vide.' },
