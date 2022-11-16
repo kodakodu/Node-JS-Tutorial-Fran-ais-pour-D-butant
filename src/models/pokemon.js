@@ -23,6 +23,14 @@ module.exports = (sequelize, DataTypes) => {
             msg: 'Utilisez uniquement des nombres entiers pour les points de vie.',
           },
           notNull: { msg: 'Les points de vie sont une propriété requise.' },
+          max: {
+            args: [999],
+            msg: 'Maximun de HP à 999',
+          },
+          min: {
+            args: [0],
+            msg: 'Minimum de HP à 0',
+          },
         },
       },
       cp: {
@@ -33,6 +41,14 @@ module.exports = (sequelize, DataTypes) => {
             msg: 'Uniquement des nombres entiers pour les points de combat.',
           },
           notNull: { msg: 'Les points de combat sont une propriété requise.' },
+          max: {
+            args: [99],
+            msg: 'Maximun de CP à 99',
+          },
+          min: {
+            args: [0],
+            msg: 'Minimum de CP à 0',
+          },
         },
       },
       picture: {
