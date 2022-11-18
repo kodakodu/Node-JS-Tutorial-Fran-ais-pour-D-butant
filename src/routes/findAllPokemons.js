@@ -2,6 +2,13 @@ const { Pokemon } = require('../db/sequelize');
 
 module.exports = (app) => {
   app.get('/api/pokemons', (req, res) => {
+    if (req.query.name) {
+      const name = req.query.name;
+      return Pokemon.findAll({ where: { name: name } }).then((pokemons) => {
+        const message = `Il y a ${pokemons.length} pokemons qui correspondent au terle de recherche ${name}.`;
+        res.json({ message, data: pokemons });
+      });
+    }
 try {
   Pokemon.findAll()
     .then((pokemons) => {
