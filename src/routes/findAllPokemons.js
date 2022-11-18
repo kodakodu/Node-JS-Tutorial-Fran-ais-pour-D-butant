@@ -5,12 +5,12 @@ module.exports = (app) => {
   app.get('/api/pokemons', (req, res) => {
     if (req.query.name) {
       const name = req.query.name;
-      return Pokemon.findAll({ where: { name: { [Op.eq]: name } } }).then(
-        (pokemons) => {
-          const message = `Il y a ${pokemons.length} pokemons qui correspondent au terme de recherche ${name}.`;
-          res.json({ message, data: pokemons });
-        }
-      );
+      return Pokemon.findAll({
+        where: { name: { [Op.like]: `%${name}%` } },
+      }).then((pokemons) => {
+        const message = `Il y a ${pokemons.length} pokemons qui correspondent au terme de recherche ${name}.`;
+        res.json({ message, data: pokemons });
+      });
     } else {
       try {
         Pokemon.findAll()
