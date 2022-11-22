@@ -7,7 +7,7 @@ const validTypes = [
   'Vol',
   'Normal',
   'Electrik',
-  'Fee',
+  'Fée',
 ];
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
