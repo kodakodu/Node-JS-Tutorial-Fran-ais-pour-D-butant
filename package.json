@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kodakodu/Node-Pokemon-API#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "express": "^4.18.2",
     "mariadb": "^3.0.2",
