@@ -17,6 +17,9 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 app.use(favicon(__dirname + '/favicon.ico')).use(bodyParser.json());
 
 sequelize.initDb();
+app.get('/', (req, res) => {
+  res.json('Hello Heroku !');
+});
 
 require('./src/routes/findAllPokemons')(app);
 require('./src/routes/findPokemonByPk')(app);
