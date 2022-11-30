@@ -1,5 +1,4 @@
 const express = require('express');
-const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const sequelize = require('./src/db/sequelize');
@@ -15,10 +14,7 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 
 //   .use(morgan('combined', { stream: accessLogStream }))
 
-app
-  .use(favicon(__dirname + '/favicon.ico'))
-  .use(morgan('dev'))
-  .use(bodyParser.json());
+app.use(favicon(__dirname + '/favicon.ico')).use(bodyParser.json());
 
 sequelize.initDb();
 
@@ -38,4 +34,3 @@ app.use(({ res }) => {
 app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
 });
-
