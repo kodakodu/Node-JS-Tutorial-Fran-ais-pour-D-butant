@@ -4,7 +4,8 @@
   "description": "https://www.youtube.com/watch?v=NRxzvpdduvQ&amp;t=3912s",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
